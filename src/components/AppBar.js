@@ -12,8 +12,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { Link } from "react-router-dom";
 
-const pages = ["Abous Us", "Patient List", "Add Patient"];
+const pages = ["About Us", "Patient List", "Add Patient"];
+
+const pageIDs = {
+  "About Us": "/aboutus",
+  "Patient List": "/patients",
+  "Add Patient": "/addpatient",
+};
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
@@ -34,6 +41,8 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  console.log(pageIDs[pages[0]]);
 
   return (
     <AppBar position="static">
@@ -119,7 +128,12 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                <Link
+                  to={pageIDs[page]}
+                  style={{ color: "inherit", textDecoration: "inherit" }}
+                >
+                  {page}
+                </Link>
               </Button>
             ))}
           </Box>
