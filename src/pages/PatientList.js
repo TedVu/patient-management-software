@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import { faker } from "@faker-js/faker";
 
 const columns = [
   { id: "fullname", label: "Full Name", minWidth: 170 },
@@ -37,15 +38,30 @@ function createData(fullname, age, gender, address, phone) {
   return { fullname, age, gender, address, phone };
 }
 
-const rows = [
-  createData(
-    "Ted Vu",
-    "24",
-    "Male",
-    "6 Tylers Run Keysborough VIC 3173",
-    "0426991804"
-  ),
-];
+const getFullname = () => {
+  const firstName = String(faker.name.firstName());
+  const lastName = String(faker.name.lastName());
+
+  return firstName + " " + lastName;
+};
+
+function createUsers() {
+  var users = [];
+  for (let i = 0; i < 100; ++i) {
+    users.push(
+      createData(
+        getFullname(),
+        24,
+        "Male",
+        faker.address.city(),
+        faker.phone.number()
+      )
+    );
+  }
+
+  return users;
+}
+const rows = createUsers();
 
 export default function PatientList() {
   const [page, setPage] = React.useState(0);
@@ -70,7 +86,7 @@ export default function PatientList() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{ minWidth: column.minWidth, fontWeight: "bold" }}
                 >
                   {column.label}
                 </TableCell>
