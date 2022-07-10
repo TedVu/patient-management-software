@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 const pages = ["About Us", "Patient List", "Add Patient"];
 
 const pageIDs = {
-  "About Us": "/aboutus",
+  "About Us": "/",
   "Patient List": "/patients",
   "Add Patient": "/addpatient",
 };
