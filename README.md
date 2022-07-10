@@ -2,7 +2,7 @@
 
 ## **Project Introduction**
 
-A patient manage software that can be used by GP in small medial consultation office.
+A patient manage software that can be used by GP in small medical consultation office.
 
 ## **Tech stack**
 
